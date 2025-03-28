@@ -56,6 +56,13 @@
           "on": "mdi:water-alert"
         }
       },
+      "light": {
+        "default": "mdi:lightbulb-outline",
+        "state": {
+          "off": "mdi:lightbulb-outline",
+          "on": "mdi:lightbulb-on-outline"
+        }
+      },
       "liquid_empty": {
         "default": "mdi:water-check",
         "state": {
@@ -118,6 +125,9 @@
           "off": "mdi:check-circle",
           "on": "mdi:wave-arrow-down"
         }
+      },
+      "spray": {
+        "default": "mdi:spray"
       },
       "waste_bin": {
         "default": "mdi:delete",
@@ -361,6 +371,9 @@
       },
       "spray_deodorant_liquid": {
         "default": "mdi:hydraulic-oil-level"
+      },
+      "spray_times": {
+        "default": "mdi:spray"
       },
       "times_dispensed": {
         "default": "mdi:food-drumstick"

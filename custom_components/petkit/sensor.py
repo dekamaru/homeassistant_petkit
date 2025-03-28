@@ -13,6 +13,7 @@ from pypetkitapi import (
     D4SH,
     DEVICES_LITTER_BOX,
     K2,
+    K3,
     T3,
     T4,
     T5,
@@ -93,7 +94,7 @@ COMMON_ENTITIES = [
             if hasattr(device.state, "error_msg") and device.state.error_msg is not None
             else NO_ERROR
         ),
-        force_add=[K2],
+        force_add=[K2, K3],
     ),
     PetKitSensorDesc(
         key="End date care plus subscription",
@@ -538,9 +539,44 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
             native_unit_of_measurement=PERCENTAGE,
             value=lambda device: (
                 device.state.liquid
-                if device.state.liquid is not None and 0 <= device.state.liquid <= 100
+                if hasattr(device.state, "liquid")
+                and device.state.liquid is not None
+                and 0 <= device.state.liquid <= 100
+                else (
+                    device.liquid
+                    if hasattr(device, "liquid")
+                    and device.liquid is not None
+                    and 0 <= device.liquid <= 100
+                    else None
+                )
+            ),
+        ),
+        PetKitSensorDesc(
+            key="Battery",
+            translation_key="smart_spray_battery",
+            entity_category=EntityCategory.DIAGNOSTIC,
+            device_class=SensorDeviceClass.BATTERY,
+            state_class=SensorStateClass.MEASUREMENT,
+            native_unit_of_measurement=PERCENTAGE,
+            value=lambda device: device.battery,
+        ),
+        PetKitSensorDesc(
+            key="Battery voltage",
+            translation_key="battery_voltage",
+            entity_category=EntityCategory.DIAGNOSTIC,
+            device_class=SensorDeviceClass.VOLTAGE,
+            native_unit_of_measurement=UnitOfElectricPotential.VOLT,
+            value=lambda device: (
+                round(device.voltage / 1000, 1)
+                if isinstance(device.voltage, (int, float)) and device.voltage > 0
                 else None
             ),
+        ),
+        PetKitSensorDesc(
+            key="Spray times",
+            translation_key="spray_times",
+            state_class=SensorStateClass.TOTAL,
+            value=lambda device: device.spray_times,
         ),
     ],
     Pet: [

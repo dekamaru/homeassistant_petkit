@@ -27,6 +27,12 @@
       "battery": {
         "name": "Battery"
       },
+      "light": {
+        "name": "Light"
+      },
+      "spray": {
+        "name": "Spray"
+      },
       "battery_installed": {
         "name": "Battery installed"
       },
@@ -429,6 +435,9 @@
       },
       "smart_spray_battery": {
         "name": "Smart spray battery"
+      },
+      "spray_times": {
+        "name": "Spray times"
       },
       "spray_deodorant_liquid": {
         "name": "Spray deodorant liquid"
