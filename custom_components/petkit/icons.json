@@ -197,14 +197,14 @@
       "min_eating_duration": {
         "default": "mdi:timer"
       },
+      "pet_weight": {
+        "default": "mdi:weight-kilogram"
+      },
       "surplus": {
         "default": "mdi:scale"
       },
       "volume": {
         "default": "mdi:volume-high"
-      },
-      "pet_weight": {
-        "default": "mdi:weight-kilogram"
       }
     },
     "select": {
