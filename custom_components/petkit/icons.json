@@ -202,6 +202,9 @@
       },
       "volume": {
         "default": "mdi:volume-high"
+      },
+      "pet_weight": {
+        "default": "mdi:weight-kilogram"
       }
     },
     "select": {

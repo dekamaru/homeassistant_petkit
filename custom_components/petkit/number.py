@@ -19,9 +19,11 @@ from pypetkitapi import (
     FeederCommand,
     Litter,
     Pet,
+    PetCommand,
     Purifier,
     WaterFountain,
 )
+from pypetkitapi.const import PET
 
 from homeassistant.components.number import (
     NumberDeviceClass,
@@ -29,7 +31,7 @@ from homeassistant.components.number import (
     NumberEntityDescription,
     NumberMode,
 )
-from homeassistant.const import EntityCategory, UnitOfTime
+from homeassistant.const import EntityCategory, UnitOfMass, UnitOfTime
 
 from .const import LOGGER, POWER_ONLINE_STATE
 from .entity import PetKitDescSensorBase, PetkitEntity
@@ -46,7 +48,7 @@ if TYPE_CHECKING:
 class PetKitNumberDesc(PetKitDescSensorBase, NumberEntityDescription):
     """A class that describes number entities."""
 
-    native_value: Callable[[PetkitDevices], float | None] | None = None
+    native_value: Callable[[PetkitDevices], None] | None = None
     action: Callable[[PetkitConfigEntry, PetkitDevices, str], Any] | None
 
 
@@ -95,7 +97,7 @@ NUMBER_MAPPING: dict[type[PetkitDevices], list[PetKitNumberDesc]] = {
             mode=NumberMode.SLIDER,
             native_value=lambda device: device.settings.shortest,
             action=lambda api, device, value: api.send_api_request(
-                device, DeviceCommand.UPDATE_SETTING, {"shortest": int(value)}
+                device.id, DeviceCommand.UPDATE_SETTING, {"shortest": int(value)}
             ),
             only_for_types=[D4S],
         ),
@@ -110,7 +112,7 @@ NUMBER_MAPPING: dict[type[PetkitDevices], list[PetKitNumberDesc]] = {
             mode=NumberMode.SLIDER,
             native_value=lambda device: 0,
             action=lambda api, device, value: api.send_api_request(
-                device, FeederCommand.MANUAL_FEED, {"amount": int(value)}
+                device.id, FeederCommand.MANUAL_FEED, {"amount": int(value)}
             ),
             only_for_types=[FEEDER],
         ),
@@ -128,7 +130,7 @@ NUMBER_MAPPING: dict[type[PetkitDevices], list[PetKitNumberDesc]] = {
             mode=NumberMode.SLIDER,
             native_value=lambda device: device.settings.still_time / 60,
             action=lambda api, device, value: api.send_api_request(
-                device, DeviceCommand.UPDATE_SETTING, {"stillTime": int(value * 60)}
+                device.id, DeviceCommand.UPDATE_SETTING, {"stillTime": int(value * 60)}
             ),
         ),
     ],
@@ -136,21 +138,21 @@ NUMBER_MAPPING: dict[type[PetkitDevices], list[PetKitNumberDesc]] = {
     Purifier: [*COMMON_ENTITIES],
     Pet: [
         *COMMON_ENTITIES,
-        # PetKitNumberDesc(
-        #     key="Pet weight",
-        #     translation_key="pet_weight",
-        #     entity_category=EntityCategory.CONFIG,
-        #     native_min_value=1,
-        #     native_max_value=100,
-        #     native_step=0.1,
-        #     native_unit_of_measurement=UnitOfMass.KILOGRAMS,
-        #     mode=NumberMode.SLIDER,
-        #     native_value=lambda device: device.settings.shortest, # TODO : à recupérer !!!
-        #     action=lambda api, device, value: api.send_api_request(
-        #         device, PetCommand.PET_UPDATE_SETTING, {"weight": int(value)}
-        #     ),
-        #     only_for_types=[PET],
-        # ),
+        PetKitNumberDesc(
+            key="Pet weight",
+            translation_key="pet_weight",
+            entity_category=EntityCategory.CONFIG,
+            native_min_value=1,
+            native_max_value=100,
+            native_step=0.1,
+            native_unit_of_measurement=UnitOfMass.KILOGRAMS,
+            mode=NumberMode.BOX,
+            native_value=lambda device: 0.0,
+            action=lambda api, device, value: api.send_api_request(
+                device.id, PetCommand.PET_UPDATE_SETTING, {"weight": int(value)}
+            ),
+            only_for_types=[PET],
+        ),
     ],
 }
 
@@ -186,7 +188,7 @@ class PetkitNumber(PetkitEntity, NumberEntity):
         self,
         coordinator: PetkitDataUpdateCoordinator,
         entity_description: PetKitNumberDesc,
-        device: Feeder | Litter | WaterFountain,
+        device: Feeder | Litter | WaterFountain | Purifier | Pet,
     ) -> None:
         """Initialize the switch class."""
         super().__init__(coordinator, device)
@@ -235,7 +237,7 @@ class PetkitNumber(PetkitEntity, NumberEntity):
     def available(self) -> bool:
         """Return if this button is available or not"""
         device_data = self.coordinator.data.get(self.device.id)
-        if hasattr(device_data.state, "pim"):
+        if device_data and hasattr(device_data, 'state') and hasattr(device_data.state, 'pim'):
             return device_data.state.pim in POWER_ONLINE_STATE
         return True
 
