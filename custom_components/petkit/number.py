@@ -147,7 +147,7 @@ NUMBER_MAPPING: dict[type[PetkitDevices], list[PetKitNumberDesc]] = {
             native_step=0.1,
             native_unit_of_measurement=UnitOfMass.KILOGRAMS,
             mode=NumberMode.BOX,
-            native_value=lambda device: 0.0,
+            native_value=lambda device: device.pet_details.weight,
             action=lambda api, device, value: api.send_api_request(
                 device.id, PetCommand.PET_UPDATE_SETTING, {"weight": int(value)}
             ),
