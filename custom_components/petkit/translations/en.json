@@ -75,11 +75,8 @@
       "pump_running": {
         "name": "Pump"
       },
-      "liquid_empty": {
-        "name": "Deodorizer liquid empty"
-      },
       "liquid_lack": {
-        "name": "Deodorizer liquid lack"
+        "name": "Spray liquid lack"
       },
       "litter": {
         "name": "Litter"
@@ -264,6 +261,9 @@
       "error": {
         "name": "Error"
       },
+      "battery": {
+        "name": "Battery"
+      },
       "error_message": {
         "name": "Error",
         "state": {
@@ -432,9 +432,6 @@
       },
       "rssi": {
         "name": "RSSI"
-      },
-      "smart_spray_battery": {
-        "name": "Smart spray battery"
       },
       "spray_times": {
         "name": "Spray times"

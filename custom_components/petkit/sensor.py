@@ -294,15 +294,6 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
     Litter: [
         *COMMON_ENTITIES,
         PetKitSensorDesc(
-            key="Smart spray battery",
-            translation_key="smart_spray_battery",
-            entity_category=EntityCategory.DIAGNOSTIC,
-            device_class=SensorDeviceClass.BATTERY,
-            state_class=SensorStateClass.MEASUREMENT,
-            native_unit_of_measurement=PERCENTAGE,
-            value=lambda device: device.k3_device.battery,
-        ),
-        PetKitSensorDesc(
             key="Litter level",
             translation_key="litter_level",
             state_class=SensorStateClass.MEASUREMENT,
@@ -338,18 +329,6 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
             state_class=SensorStateClass.MEASUREMENT,
             native_unit_of_measurement=UnitOfTime.DAYS,
             value=lambda device: device.state.deodorant_left_days,
-        ),
-        PetKitSensorDesc(
-            key="Spray deodorant liquid",
-            translation_key="spray_deodorant_liquid",
-            state_class=SensorStateClass.MEASUREMENT,
-            native_unit_of_measurement=PERCENTAGE,
-            value=lambda device: (
-                device.k3_device.liquid
-                if device.k3_device.liquid is not None
-                and 0 <= device.k3_device.liquid <= 100
-                else None
-            ),
         ),
         PetKitSensorDesc(
             key="Times used",
@@ -553,7 +532,7 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
         ),
         PetKitSensorDesc(
             key="Battery",
-            translation_key="smart_spray_battery",
+            translation_key="battery",
             entity_category=EntityCategory.DIAGNOSTIC,
             device_class=SensorDeviceClass.BATTERY,
             state_class=SensorStateClass.MEASUREMENT,
@@ -572,12 +551,12 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
                 else None
             ),
         ),
-        PetKitSensorDesc(
-            key="Spray times",
-            translation_key="spray_times",
-            state_class=SensorStateClass.TOTAL,
-            value=lambda device: device.spray_times,
-        ),
+        # PetKitSensorDesc(
+        #     key="Spray times",
+        #     translation_key="spray_times",
+        #     state_class=SensorStateClass.TOTAL,
+        #     value=lambda device: device.spray_times,
+        # ),
     ],
     Pet: [
         PetKitSensorDesc(

@@ -49,22 +49,6 @@ COMMON_ENTITIES = [
             > datetime.now()
         ),
     ),
-    PetKitBinarySensorDesc(
-        key="Liquid empty",
-        translation_key="liquid_empty",
-        device_class=BinarySensorDeviceClass.PROBLEM,
-        value=lambda device: (
-            device.state.liquid_empty if device.k3_device is not None else None
-        ),
-    ),
-    PetKitBinarySensorDesc(
-        key="Liquid lack",
-        translation_key="liquid_lack",
-        device_class=BinarySensorDeviceClass.PROBLEM,
-        value=lambda device: (
-            device.state.liquid_lack if device.k3_device is not None else None
-        ),
-    ),
 ]
 
 BINARY_SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitBinarySensorDesc]] = {
@@ -237,7 +221,9 @@ BINARY_SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitBinarySensorDesc]] =
             key="Liquid lack",
             translation_key="liquid_lack",
             device_class=BinarySensorDeviceClass.PROBLEM,
-            value=lambda device: device.liquid_lack,
+            value=lambda device: (
+                None if device.liquid_lack is None else device.liquid_lack == 0
+            ),
         ),
     ],
     Pet: [*COMMON_ENTITIES],
