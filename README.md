@@ -188,7 +188,11 @@ This integration is available in the following languages:
 
 ## 👨‍💻 Contributions are welcome!
 
-If you want to contribute to this please read the [Contribution guidelines](CONTRIBUTING.md)
+Developers? Want to help? Join us on our Discord channel dedicated to developers and contributors.
+
+[![Discord][discord-shield]][discord]
+
+[Contribution guidelines](CONTRIBUTING.md)
 
 ## 🏅 Code quality
 
