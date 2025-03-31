@@ -9,7 +9,7 @@
 
 ### Enjoying this integration?
 
-[![Sponsor Jezza34000](https://img.shields.io/badge/sponsor-Jezza34000-blue.svg?style=for-the-badge&logo=githubsponsors&color=EA4AAA)](https://github.com/sponsors/Jezza34000) [![Static Badge](https://img.shields.io/badge/Donate-buy_me_a_coffee-yellow.svg?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/jezza)
+[![Sponsor Jezza34000][github-sponsor-shield]][github-sponsor] [![Static Badge][buymeacoffee-shield]][buymeacoffee]
 
 ## 🚀 Features
 
@@ -234,3 +234,7 @@ This repository is based on my client library for the Petkit API, which can be f
 [releases]: https://github.com/Jezza34000/homeassistant_petkit/releases
 [petkit-device-cards]: https://github.com/homeassistant-extras/petkit-device-cards
 [schedule-card]: https://github.com/cristianchelu/dispenser-schedule-card
+[github-sponsor-shield]: https://img.shields.io/badge/sponsor-Jezza34000-blue.svg?style=for-the-badge&logo=githubsponsors&color=EA4AAA
+[github-sponsor]: https://github.com/sponsors/Jezza34000
+[buymeacoffee-shield]: https://img.shields.io/badge/Donate-buy_me_a_coffee-yellow.svg?style=for-the-badge&logo=buy-me-a-coffee
+[buymeacoffee]: https://www.buymeacoffee.com/jezza
