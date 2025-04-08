@@ -598,7 +598,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="litter_full_notify",
+            key="Litter full notify",
             translation_key="litter_full_notify",
             value=lambda device: device.settings.litter_full_notify,
             entity_category=EntityCategory.CONFIG,
@@ -610,7 +610,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="pet_in_notify",
+            key="Pet in notify",
             translation_key="pet_in_notify",
             value=lambda device: device.settings.pet_in_notify,
             entity_category=EntityCategory.CONFIG,
@@ -622,7 +622,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="work_notify",
+            key="Work notify",
             translation_key="work_notify",
             value=lambda device: device.settings.work_notify,
             entity_category=EntityCategory.CONFIG,
