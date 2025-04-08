@@ -181,8 +181,8 @@ BUTTON_MAPPING: dict[type[PetkitDevices], list[PetKitButtonDesc]] = {
             is_available=lambda device: device.state.work_state is not None,
         ),
         PetKitButtonDesc(
-            # For T4 only
-            key="Deodorize",
+            # For T3/T4 only
+            key="Deodorize T3 T4",
             translation_key="deodorize",
             action=lambda api, device: api.send_api_request(
                 device.id,
@@ -193,8 +193,8 @@ BUTTON_MAPPING: dict[type[PetkitDevices], list[PetKitButtonDesc]] = {
             value=lambda device: device.k3_device,
         ),
         PetKitButtonDesc(
-            # For T5/T6
-            key="Deodorize",
+            # For T5/T6 only
+            key="Deodorize T5 T6",
             translation_key="deodorize",
             action=lambda api, device: api.send_api_request(
                 device.id,

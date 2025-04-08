@@ -184,7 +184,7 @@ COMMON_ENTITIES = [
         ),
     ),
     PetKitSwitchDesc(
-        key="lack_liquid_notify",
+        key="Lack Liquid Notify",
         translation_key="lack_liquid_notify",
         value=lambda device: device.settings.lack_liquid_notify,
         entity_category=EntityCategory.CONFIG,
@@ -548,8 +548,8 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            # For T4
-            key="Deep deodorizing",
+            # For T3/T4 only
+            key="Deep deodorizing T3 T4",
             translation_key="deep_deodor",
             value=lambda device: device.settings.deep_refresh,
             entity_category=EntityCategory.CONFIG,
@@ -562,7 +562,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
         ),
         PetKitSwitchDesc(
             # For T5/T6 only
-            key="Deep deodorizing",
+            key="Deep deodorizing T5 T6",
             translation_key="deep_deodor",
             value=lambda device: device.settings.deep_spray,
             entity_category=EntityCategory.CONFIG,
@@ -634,7 +634,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="deodorant_n50_notify",
+            key="Deodorant N50 notify",
             translation_key="deodorant_n50_notify",
             value=lambda device: device.settings.deodorant_notify,
             entity_category=EntityCategory.CONFIG,
@@ -646,7 +646,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="deodorant_n60_notify",
+            key="Deodorant N60 notify",
             translation_key="deodorant_n60_notify",
             value=lambda device: device.settings.spray_notify,
             entity_category=EntityCategory.CONFIG,
@@ -658,7 +658,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="lack_sand_notify",
+            key="Lack sand notify",
             translation_key="lack_sand_notify",
             value=lambda device: device.settings.lack_sand_notify,
             entity_category=EntityCategory.CONFIG,
@@ -670,7 +670,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="work_log_notify",
+            key="Work log notify",
             translation_key="work_log_notify",
             value=lambda device: device.settings.log_notify,
             entity_category=EntityCategory.CONFIG,
@@ -683,7 +683,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
         ),
         PetKitSwitchDesc(
             # For K3 or K3 (binded to T4)
-            key="Light",
+            key="Light K3",
             translation_key="light",
             value=lambda device: (
                 None
@@ -707,7 +707,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
         ),
         PetKitSwitchDesc(
             # For T5 / T6
-            key="Light",
+            key="Light camera",
             translation_key="light",
             value=lambda device: (
                 device.state.light_state.work_process
