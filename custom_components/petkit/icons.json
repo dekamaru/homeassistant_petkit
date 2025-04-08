@@ -643,8 +643,8 @@
       "periodic_deodorizing": {
         "default": "mdi:calendar",
         "state": {
-          "off": "mdi:calendar-off",
-          "on": "mdi:calendar"
+          "off": "mdi:calendar-remove",
+          "on": "mdi:calendar-multiple-check"
         }
       },
       "pet_eat_notif": {
