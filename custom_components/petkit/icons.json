@@ -171,7 +171,7 @@
         "default": "mdi:location-exit"
       },
       "level_litter": {
-        "default": "mdi:rake"
+        "default": "mdi:spirit-level"
       },
       "reset_n50_odor_eliminator": {
         "default": "mdi:restart"
