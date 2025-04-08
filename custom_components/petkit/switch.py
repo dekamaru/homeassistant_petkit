@@ -20,7 +20,7 @@ from pypetkitapi import (
     Litter,
     Pet,
     Purifier,
-    WaterFountain,
+    WaterFountain, T4,
 )
 
 from homeassistant.components.switch import SwitchEntity, SwitchEntityDescription
@@ -704,6 +704,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
                 DeviceCommand.CONTROL_DEVICE,
                 {DeviceAction.END: LBCommand.LIGHT},
             ),
+            only_for_types=[T4]
         ),
         PetKitSwitchDesc(
             # For T5 / T6
@@ -724,7 +725,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
                 DeviceCommand.CONTROL_DEVICE,
                 {DeviceAction.END: LBCommand.LIGHT},
             ),
-            force_add=[T5, T6],
+            only_for_types=[T5, T6],
         ),
         PetKitSwitchDesc(
             key="Light Assist",
