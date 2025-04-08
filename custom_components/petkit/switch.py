@@ -11,6 +11,8 @@ from typing import TYPE_CHECKING, Any
 from pypetkitapi import (
     DEVICES_LITTER_BOX,
     FEEDER_MINI,
+    T5,
+    T6,
     DeviceAction,
     DeviceCommand,
     Feeder,
@@ -399,8 +401,9 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
     Litter: [
         *COMMON_ENTITIES,
         PetKitSwitchDesc(
-            key="Auto odor",
-            translation_key="auto_odor",
+            # For T3/T4 only
+            key="Auto deodorizing",
+            translation_key="auto_deodor",
             value=lambda device: device.settings.auto_refresh,
             entity_category=EntityCategory.CONFIG,
             turn_on=lambda api, device: api.send_api_request(
@@ -408,6 +411,19 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
             turn_off=lambda api, device: api.send_api_request(
                 device.id, DeviceCommand.UPDATE_SETTING, {"autoRefresh": 0}
+            ),
+        ),
+        PetKitSwitchDesc(
+            # For T5/T6 only
+            key="Auto deodorizing",
+            translation_key="auto_deodor",
+            value=lambda device: device.settings.auto_spray,
+            entity_category=EntityCategory.CONFIG,
+            turn_on=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"autoSpray": 1}
+            ),
+            turn_off=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"autoSpray": 0}
             ),
         ),
         PetKitSwitchDesc(
@@ -447,8 +463,9 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="Periodic odor",
-            translation_key="periodic_odor",
+            # For T3/T4 only
+            key="Periodic deodorizing",
+            translation_key="periodic_deodorizing",
             value=lambda device: device.settings.fixed_time_refresh,
             entity_category=EntityCategory.CONFIG,
             turn_on=lambda api, device: api.send_api_request(
@@ -456,6 +473,19 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
             turn_off=lambda api, device: api.send_api_request(
                 device.id, DeviceCommand.UPDATE_SETTING, {"fixedTimeRefresh": 0}
+            ),
+        ),
+        PetKitSwitchDesc(
+            # For T5/T6 only
+            key="Periodic deodorizing",
+            translation_key="periodic_deodorizing",
+            value=lambda device: device.settings.fixed_time_spray,
+            entity_category=EntityCategory.CONFIG,
+            turn_on=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"fixedTimeSpray": 1}
+            ),
+            turn_off=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"fixedTimeSpray": 0}
             ),
         ),
         PetKitSwitchDesc(
@@ -518,7 +548,8 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="Deep deodor",
+            # For T4
+            key="Deep deodorizing",
             translation_key="deep_deodor",
             value=lambda device: device.settings.deep_refresh,
             entity_category=EntityCategory.CONFIG,
@@ -527,6 +558,19 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
             turn_off=lambda api, device: api.send_api_request(
                 device.id, DeviceCommand.UPDATE_SETTING, {"deepRefresh": 0}
+            ),
+        ),
+        PetKitSwitchDesc(
+            # For T5/T6 only
+            key="Deep deodorizing",
+            translation_key="deep_deodor",
+            value=lambda device: device.settings.deep_spray,
+            entity_category=EntityCategory.CONFIG,
+            turn_on=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"deepSpray": 1}
+            ),
+            turn_off=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"deepSpray": 0}
             ),
         ),
         PetKitSwitchDesc(
@@ -590,8 +634,8 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
-            key="deodorant_notify",
-            translation_key="deodorant_notify",
+            key="deodorant_n50_notify",
+            translation_key="deodorant_n50_notify",
             value=lambda device: device.settings.deodorant_notify,
             entity_category=EntityCategory.CONFIG,
             turn_on=lambda api, device: api.send_api_request(
@@ -599,6 +643,18 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
             turn_off=lambda api, device: api.send_api_request(
                 device.id, DeviceCommand.UPDATE_SETTING, {"deodorantNotify": 0}
+            ),
+        ),
+        PetKitSwitchDesc(
+            key="deodorant_n60_notify",
+            translation_key="deodorant_n60_notify",
+            value=lambda device: device.settings.spray_notify,
+            entity_category=EntityCategory.CONFIG,
+            turn_on=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"sprayNotify": 1}
+            ),
+            turn_off=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"sprayNotify": 0}
             ),
         ),
         PetKitSwitchDesc(
@@ -626,6 +682,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
+            # For K3 or K3 (binded to T4)
             key="Light",
             translation_key="light",
             value=lambda device: (
@@ -646,6 +703,39 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
                 device.id,
                 DeviceCommand.CONTROL_DEVICE,
                 {DeviceAction.END: LBCommand.LIGHT},
+            ),
+        ),
+        PetKitSwitchDesc(
+            # For T5 / T6
+            key="Light",
+            translation_key="light",
+            value=lambda device: (
+                device.state.light_state.work_process
+                if device.state.light_state is not None
+                else 0
+            ),
+            turn_on=lambda api, device: api.send_api_request(
+                device.id,
+                DeviceCommand.CONTROL_DEVICE,
+                {DeviceAction.START: LBCommand.LIGHT},
+            ),
+            turn_off=lambda api, device: api.send_api_request(
+                device.id,
+                DeviceCommand.CONTROL_DEVICE,
+                {DeviceAction.END: LBCommand.LIGHT},
+            ),
+            force_add=[T5, T6],
+        ),
+        PetKitSwitchDesc(
+            key="Light Assist",
+            translation_key="light_assist",
+            value=lambda device: device.settings.light_assist,
+            entity_category=EntityCategory.CONFIG,
+            turn_on=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"lightAssist": 1}
+            ),
+            turn_off=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"lightAssist": 0}
             ),
         ),
     ],
