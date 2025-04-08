@@ -22,6 +22,13 @@
           "on": "mdi:cloud-check"
         }
       },
+      "deodorization_running": {
+        "default": "mdi:air-purifier-off",
+        "state": {
+          "off": "mdi:air-purifier-off",
+          "on": "mdi:air-purifier"
+        }
+      },
       "eating": {
         "default": "mdi:cat"
       },
@@ -163,8 +170,14 @@
       "exit_maintenance": {
         "default": "mdi:location-exit"
       },
-      "reset_odor_eliminator": {
-        "default": "mdi:scent"
+      "level_litter": {
+        "default": "mdi:rake"
+      },
+      "reset_n50_odor_eliminator": {
+        "default": "mdi:restart"
+      },
+      "reset_n60_odor_eliminator": {
+        "default": "mdi:restart"
       },
       "start_maintenance": {
         "default": "mdi:progress-wrench"
@@ -255,9 +268,6 @@
           "1": "mdi:battery-high"
         }
       },
-      "deodorant_left_days": {
-        "default": "mdi:scent"
-      },
       "desiccant_left_days": {
         "default": "mdi:air-filter"
       },
@@ -342,6 +352,18 @@
       "manual_dispensed_hopper_2": {
         "default": "mdi:food-drumstick"
       },
+      "odor_eliminator_n50_left_days": {
+        "default": "mdi:scent",
+        "state": {
+          "0": "mdi:scent-off"
+        }
+      },
+      "odor_eliminator_n60_left_days": {
+        "default": "mdi:scent",
+        "state": {
+          "0": "mdi:scent-off"
+        }
+      },
       "package_used": {
         "default": "mdi:trash-can"
       },
@@ -423,7 +445,7 @@
           "on": "mdi:broom"
         }
       },
-      "auto_odor": {
+      "auto_deodor": {
         "default": "mdi:air-filter",
         "state": {
           "off": "mdi:air-filter-off",
@@ -473,9 +495,20 @@
         }
       },
       "deep_deodor": {
-        "default": "mdi:spray"
+        "default": "mdi:broom",
+        "state": {
+          "off": "mdi:numeric-1-circle",
+          "on": "mdi:numeric-2-circle"
+        }
       },
-      "deodorant_notify": {
+      "deodorant_n50_notify": {
+        "default": "mdi:bell",
+        "state": {
+          "off": "mdi:bell-off",
+          "on": "mdi:bell-check"
+        }
+      },
+      "deodorant_n60_notify": {
         "default": "mdi:bell",
         "state": {
           "off": "mdi:bell-off",
@@ -555,6 +588,13 @@
           "on": "mdi:lightbulb-on"
         }
       },
+      "light_assist": {
+        "default": "mdi:track-light",
+        "state": {
+          "off": "mdi:track-light-off",
+          "on": "mdi:track-light"
+        }
+      },
       "light_weight": {
         "default": "mdi:feather"
       },
@@ -600,7 +640,7 @@
           "on": "mdi:calendar-multiple-check"
         }
       },
-      "periodic_odor": {
+      "periodic_deodorizing": {
         "default": "mdi:calendar",
         "state": {
           "off": "mdi:calendar-off",

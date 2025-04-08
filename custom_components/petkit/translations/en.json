@@ -45,6 +45,9 @@
       "deodorizer": {
         "name": "Deodorizer"
       },
+      "deodorization_running": {
+        "name": "Deodorization"
+      },
       "do_not_disturb_state": {
         "name": "Do not disturb"
       },
@@ -76,7 +79,7 @@
         "name": "Pump"
       },
       "liquid_lack": {
-        "name": "Spray liquid lack"
+        "name": "Liquid level"
       },
       "litter": {
         "name": "Litter"
@@ -146,14 +149,20 @@
       "reset_desiccant": {
         "name": "Reset desiccant"
       },
-      "reset_odor_eliminator": {
-        "name": "Reset odor eliminator"
+      "reset_n50_odor_eliminator": {
+        "name": "Reset N50 odor eliminator"
+      },
+      "reset_n60_odor_eliminator": {
+        "name": "Reset N60 odor eliminator"
       },
       "start_maintenance": {
         "name": "Maintenance : Start"
       },
       "start_scoop": {
         "name": "Scoop"
+      },
+      "level_litter": {
+        "name": "Level litter"
       }
     },
     "fan": {
@@ -177,13 +186,13 @@
     },
     "number": {
       "cleaning_delay": {
-        "name": "Cleaning Delay"
+        "name": "Cleaning delay"
       },
       "manual_feed": {
-        "name": "Manual Feed"
+        "name": "Manual feed"
       },
       "min_eating_duration": {
-        "name": "Min Eating Duration"
+        "name": "Min eating duration"
       },
       "surplus": {
         "name": "Surplus"
@@ -197,7 +206,7 @@
         "name": "Avoid repeat cleaning interval"
       },
       "eat_detection_sensitivity": {
-        "name": "IA Eat detection sensitivity"
+        "name": "IA eat detection sensitivity"
       },
       "litter_type": {
         "name": "Litter type"
@@ -212,7 +221,7 @@
         "name": "Move detection sensitivity"
       },
       "pet_detection_sensitivity": {
-        "name": "IA Pet detection sensitivity"
+        "name": "IA pet detection sensitivity"
       },
       "surplus_level": {
         "name": "Surplus control level"
@@ -235,13 +244,16 @@
         "name": "Average use"
       },
       "avg_eating_time": {
-        "name": "Average Eating Time"
+        "name": "Average eating time"
       },
       "battery_level": {
         "name": "Battery level"
       },
-      "deodorant_left_days": {
-        "name": "Deodorant left days"
+      "odor_eliminator_n50_left_days": {
+        "name": "Odor eliminator N50 left days"
+      },
+      "odor_eliminator_n60_left_days": {
+        "name": "Odor eliminator N60 left days"
       },
       "deodorizer_level": {
         "name": "Deodorizer level"
@@ -352,34 +364,34 @@
         "state": {
           "calibrating": "Calibrating",
           "cleaning": "Cleaning",
-          "cleaning_paused": "Cleaning Paused",
-          "cleaning_paused_cover": "Cleaning Paused - Cover",
-          "cleaning_paused_pet_approach": "Cleaning Paused - Pet Approach",
-          "cleaning_paused_pet_entered": "Cleaning Paused - Pet Entered",
-          "cleaning_paused_pet_using": "Cleaning Paused - Pet Using",
-          "cleaning_paused_system_error": "Cleaning Paused - System Error",
+          "cleaning_paused": "Cleaning paused",
+          "cleaning_paused_cover": "Cleaning paused - Cover",
+          "cleaning_paused_pet_approach": "Cleaning paused - Pet approach",
+          "cleaning_paused_pet_entered": "Cleaning paused - Pet entered",
+          "cleaning_paused_pet_using": "Cleaning paused - Pet using",
+          "cleaning_paused_system_error": "Cleaning paused - System error",
           "dumping": "Dumping",
-          "dumping_paused": "Dumping Paused",
-          "dumping_paused_cover": "Dumping Paused - Cover",
-          "dumping_paused_pet_approach": "Dumping Paused - Pet Approach",
-          "dumping_paused_pet_entered": "Dumping Paused - Pet Entered",
-          "dumping_paused_pet_using": "Dumping Paused - Pet Using",
-          "dumping_paused_system_error": "Dumping Paused - System Error",
+          "dumping_paused": "Dumping paused",
+          "dumping_paused_cover": "Dumping paused - Cover",
+          "dumping_paused_pet_approach": "Dumping paused - Pet approach",
+          "dumping_paused_pet_entered": "Dumping paused - Pet entered",
+          "dumping_paused_pet_using": "Dumping paused - Pet using",
+          "dumping_paused_system_error": "Dumping paused - System error",
           "idle": "Idle",
           "leveling": "Leveling",
           "maintenance": "Maintenance",
-          "maintenance_paused": "Maintenance Paused",
-          "maintenance_paused_cover": "Maintenance Paused - Cover",
-          "maintenance_paused_pet_approach": "Maintenance Paused - Pet Approach",
-          "maintenance_paused_pet_entered": "Maintenance Paused - Pet Entered",
-          "maintenance_paused_pet_using": "Maintenance Paused - Pet Using",
-          "maintenance_paused_system_error": "Maintenance Paused - System Error",
+          "maintenance_paused": "Maintenance paused",
+          "maintenance_paused_cover": "Maintenance paused - Cover",
+          "maintenance_paused_pet_approach": "Maintenance paused - Pet approach",
+          "maintenance_paused_pet_entered": "Maintenance paused - Pet entered",
+          "maintenance_paused_pet_using": "Maintenance paused - Pet using",
+          "maintenance_paused_system_error": "Maintenance paused - System error",
           "paused": "Paused",
-          "paused_cover": "Paused - Cover",
-          "paused_pet_approach": "Paused - Pet Approach",
-          "paused_pet_entered": "Paused - Pet Entered",
-          "paused_pet_using": "Paused - Pet Using",
-          "paused_system_error": "Paused - System Error",
+          "paused_cover": "paused - Cover",
+          "paused_pet_approach": "paused - Pet approach",
+          "paused_pet_entered": "paused - Pet entered",
+          "paused_pet_using": "paused - Pet using",
+          "paused_system_error": "paused - System error",
           "resetting": "Resetting",
           "resetting_device": "Resetting Device",
           "unknown": "Unknown"
@@ -392,10 +404,10 @@
         "name": "Manual dispensed"
       },
       "manual_dispensed_hopper_1": {
-        "name": "Manually Dispensed Hopper 1"
+        "name": "Manually dispensed hopper 1"
       },
       "manual_dispensed_hopper_2": {
-        "name": "Manually Dispensed Hopper 2"
+        "name": "Manually dispensed hopper 2"
       },
       "package_used": {
         "name": "Package used"
@@ -416,16 +428,16 @@
         "name": "Planned dispensed"
       },
       "planned_dispensed_hopper_1": {
-        "name": "Planned Dispensed Hopper 1"
+        "name": "Planned dispensed hopper 1"
       },
       "planned_dispensed_hopper_2": {
-        "name": "Planned Dispensed Hopper 2"
+        "name": "Planned dispensed hopper 2"
       },
       "purified_water": {
         "name": "Purified water"
       },
       "purifier_liquid": {
-        "name": "Purifier liquid"
+        "name": "Liquid level"
       },
       "raw_distribution_data": {
         "name": "RAW distribution data"
@@ -452,10 +464,10 @@
         "name": "Total dispensed"
       },
       "total_dispensed_hopper_1": {
-        "name": "Total Dispensed Hopper 1"
+        "name": "Total dispensed hopper 1"
       },
       "total_dispensed_hopper_2": {
-        "name": "Total Dispensed Hopper 2"
+        "name": "Total dispensed hopper 2"
       },
       "total_package": {
         "name": "Total package"
@@ -464,10 +476,10 @@
         "name": "Total planned"
       },
       "total_planned_hopper_1": {
-        "name": "Total Planned Hopper 1"
+        "name": "Total planned hopper 1"
       },
       "total_planned_hopper_2": {
-        "name": "Total Planned Hopper 2"
+        "name": "Total planned hopper 2"
       },
       "total_time": {
         "name": "Total use"
@@ -477,8 +489,8 @@
       "auto_clean": {
         "name": "Auto clean"
       },
-      "auto_odor": {
-        "name": "Auto odor"
+      "auto_deodor": {
+        "name": "Auto deodorizing"
       },
       "avoid_repeat_clean": {
         "name": "Avoid repeat cleaning"
@@ -496,10 +508,13 @@
         "name": "Deep cleaning"
       },
       "deep_deodor": {
-        "name": "Deep deodor"
+        "name": "Deep deodorizing"
       },
-      "deodorant_notify": {
-        "name": "Notif on deodorant replacement need"
+      "deodorant_n50_notify": {
+        "name": "Notif on N50 replacement need"
+      },
+      "deodorant_n60_notify": {
+        "name": "Notif on N60 replacement need"
       },
       "desiccant_notif": {
         "name": "Notif on desiccant change need"
@@ -511,7 +526,7 @@
         "name": "Display"
       },
       "do_not_disturb": {
-        "name": "Do Not Disturb"
+        "name": "Do not disturb"
       },
       "feed_sound": {
         "name": "Feed sound"
@@ -526,7 +541,7 @@
         "name": "Indicator light"
       },
       "kitten_mode": {
-        "name": "Kitten Mode"
+        "name": "Kitten mode"
       },
       "lack_liquid_notify": {
         "name": "Notif on purifying liquid shortage"
@@ -537,8 +552,11 @@
       "light": {
         "name": "Light"
       },
+      "light_assist": {
+        "name": "Light assist"
+      },
       "light_weight": {
-        "name": "Light Weight"
+        "name": "Light weight"
       },
       "litter_full_notify": {
         "name": "Notif on waste bin full"
@@ -556,10 +574,10 @@
         "name": "Night vision"
       },
       "periodic_cleaning": {
-        "name": "Periodic Cleaning"
+        "name": "Periodic cleaning"
       },
-      "periodic_odor": {
-        "name": "Periodic Odor"
+      "periodic_deodorizing": {
+        "name": "Periodic deodorizing"
       },
       "pet_eat_notif": {
         "name": "Notif on pet eat"
