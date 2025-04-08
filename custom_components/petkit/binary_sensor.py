@@ -6,7 +6,18 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from pypetkitapi import D4S, D4SH, T4, T6, Feeder, Litter, Pet, Purifier, WaterFountain
+from pypetkitapi import (
+    D4S,
+    D4SH,
+    T4,
+    T5,
+    T6,
+    Feeder,
+    Litter,
+    Pet,
+    Purifier,
+    WaterFountain,
+)
 
 from homeassistant.components.binary_sensor import (
     BinarySensorDeviceClass,
@@ -143,6 +154,13 @@ BINARY_SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitBinarySensorDesc]] =
             translation_key="frequent_use",
             device_class=BinarySensorDeviceClass.PROBLEM,
             value=lambda device: bool(device.state.frequent_restroom),
+        ),
+        PetKitBinarySensorDesc(
+            key="Deodorization",
+            translation_key="deodorization_running",
+            device_class=BinarySensorDeviceClass.RUNNING,
+            value=lambda device: device.state.refresh_state is not None,
+            force_add=[T5, T6],
         ),
     ],
     WaterFountain: [
