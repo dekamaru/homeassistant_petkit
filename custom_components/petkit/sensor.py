@@ -324,11 +324,18 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
             force_add=DEVICES_LITTER_BOX,
         ),
         PetKitSensorDesc(
-            key="Deodorant left days",
-            translation_key="deodorant_left_days",
+            key="Odor eliminator N50 left days",
+            translation_key="odor_eliminator_n50_left_days",
             state_class=SensorStateClass.MEASUREMENT,
             native_unit_of_measurement=UnitOfTime.DAYS,
             value=lambda device: device.state.deodorant_left_days,
+        ),
+        PetKitSensorDesc(
+            key="Odor eliminator N60 left days",
+            translation_key="odor_eliminator_n60_left_days",
+            state_class=SensorStateClass.MEASUREMENT,
+            native_unit_of_measurement=UnitOfTime.DAYS,
+            value=lambda device: device.state.spray_left_days,
         ),
         PetKitSensorDesc(
             key="Times used",
