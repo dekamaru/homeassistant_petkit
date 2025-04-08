@@ -233,6 +233,7 @@ BUTTON_MAPPING: dict[type[PetkitDevices], list[PetKitButtonDesc]] = {
                 DeviceCommand.CONTROL_DEVICE,
                 {DeviceAction.START: LBCommand.LEVELING},
             ),
+            is_available=lambda device: device.state.work_state is None,
         ),
     ],
     WaterFountain: [*COMMON_ENTITIES],
