@@ -11,6 +11,7 @@ from typing import TYPE_CHECKING, Any
 from pypetkitapi import (
     DEVICES_LITTER_BOX,
     FEEDER_MINI,
+    T4,
     T5,
     T6,
     DeviceAction,
@@ -20,7 +21,7 @@ from pypetkitapi import (
     Litter,
     Pet,
     Purifier,
-    WaterFountain, T4,
+    WaterFountain,
 )
 
 from homeassistant.components.switch import SwitchEntity, SwitchEntityDescription
@@ -704,7 +705,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
                 DeviceCommand.CONTROL_DEVICE,
                 {DeviceAction.END: LBCommand.LIGHT},
             ),
-            only_for_types=[T4]
+            only_for_types=[T4],
         ),
         PetKitSwitchDesc(
             # For T5 / T6
