@@ -146,7 +146,7 @@ COMMON_ENTITIES = [
         turn_off=lambda api, device: api.send_api_request(
             device.id, DeviceCommand.UPDATE_SETTING, {"highlight": 0}
         ),
-        ignore_types=LITTER_WITH_CAMERA
+        ignore_types=LITTER_WITH_CAMERA,
     ),
     PetKitSwitchDesc(
         key="Video timestamp",

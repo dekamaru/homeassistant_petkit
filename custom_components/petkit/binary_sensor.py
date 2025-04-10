@@ -11,12 +11,13 @@ from pypetkitapi import (
     D4SH,
     LITTER_WITH_CAMERA,
     T4,
+    T5,
     T6,
     Feeder,
     Litter,
     Pet,
     Purifier,
-    WaterFountain, T5,
+    WaterFountain,
 )
 
 from homeassistant.components.binary_sensor import (
