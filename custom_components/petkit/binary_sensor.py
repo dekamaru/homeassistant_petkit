@@ -16,7 +16,7 @@ from pypetkitapi import (
     Litter,
     Pet,
     Purifier,
-    WaterFountain,
+    WaterFountain, T5,
 )
 
 from homeassistant.components.binary_sensor import (
@@ -133,7 +133,7 @@ BINARY_SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitBinarySensorDesc]] =
             translation_key="waste_bin_presence",
             device_class=BinarySensorDeviceClass.PROBLEM,
             value=lambda device: not device.state.box_state,
-            only_for_types=[T4],
+            only_for_types=[T4, T5],
         ),
         PetKitBinarySensorDesc(
             key="Waste bin presence",
