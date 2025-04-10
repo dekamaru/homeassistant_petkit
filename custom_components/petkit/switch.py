@@ -11,9 +11,8 @@ from typing import TYPE_CHECKING, Any
 from pypetkitapi import (
     DEVICES_LITTER_BOX,
     FEEDER_MINI,
+    LITTER_WITH_CAMERA,
     T4,
-    T5,
-    T6,
     DeviceAction,
     DeviceCommand,
     Feeder,
@@ -512,6 +511,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             turn_off=lambda api, device: api.send_api_request(
                 device.id, DeviceCommand.UPDATE_SETTING, {"underweight": 0}
             ),
+            ignore_types=LITTER_WITH_CAMERA,
         ),
         PetKitSwitchDesc(
             key="Power",
@@ -726,7 +726,7 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
                 DeviceCommand.CONTROL_DEVICE,
                 {DeviceAction.END: LBCommand.LIGHT},
             ),
-            only_for_types=[T5, T6],
+            only_for_types=LITTER_WITH_CAMERA,
         ),
         PetKitSwitchDesc(
             key="Light Assist",
@@ -738,6 +738,30 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
             turn_off=lambda api, device: api.send_api_request(
                 device.id, DeviceCommand.UPDATE_SETTING, {"lightAssist": 0}
+            ),
+        ),
+        PetKitSwitchDesc(
+            key="Camera Light",
+            translation_key="camera_light",
+            value=lambda device: device.settings.camera_light,
+            entity_category=EntityCategory.CONFIG,
+            turn_on=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"cameraLight": 1}
+            ),
+            turn_off=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"cameraLight": 0}
+            ),
+        ),
+        PetKitSwitchDesc(
+            key="Notif pet toileting",
+            translation_key="pet_toileting_notif",
+            value=lambda device: device.settings.toilet_notify,
+            entity_category=EntityCategory.CONFIG,
+            turn_on=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"toiletNotify": 1}
+            ),
+            turn_off=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"toiletNotify": 0}
             ),
         ),
     ],
