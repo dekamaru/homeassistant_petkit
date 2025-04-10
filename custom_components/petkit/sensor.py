@@ -14,10 +14,9 @@ from pypetkitapi import (
     DEVICES_LITTER_BOX,
     K2,
     K3,
+    LITTER_WITH_CAMERA,
     T3,
     T4,
-    T5,
-    T6,
     W5,
     Feeder,
     Litter,
@@ -100,9 +99,17 @@ COMMON_ENTITIES = [
         key="End date care plus subscription",
         translation_key="end_date_care_plus_subscription",
         entity_category=EntityCategory.DIAGNOSTIC,
-        value=lambda device: datetime.fromtimestamp(
-            device.cloud_product.work_indate, tz=timezone.utc
-        ).strftime("%Y-%m-%d %H:%M:%S"),
+        state_class=SensorStateClass.MEASUREMENT,
+        native_unit_of_measurement=UnitOfTime.DAYS,
+        value=lambda device: max(
+            0,
+            (
+                datetime.fromtimestamp(
+                    device.cloud_product.work_indate, tz=timezone.utc
+                )
+                - datetime.now(timezone.utc)
+            ).days,
+        ),
     ),
 ]
 
@@ -299,7 +306,7 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
             state_class=SensorStateClass.MEASUREMENT,
             native_unit_of_measurement=PERCENTAGE,
             value=lambda device: device.state.sand_percent,
-            ignore_types=[T5, T6],
+            ignore_types=LITTER_WITH_CAMERA,
         ),
         PetKitSensorDesc(
             key="Litter weight",
@@ -390,7 +397,7 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
                 if device.device_pet_graph_out
                 else None
             ),
-            force_add=[T5, T6],
+            force_add=LITTER_WITH_CAMERA,
             restore_state=True,
         ),
         PetKitSensorDesc(
