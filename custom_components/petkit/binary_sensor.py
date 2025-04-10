@@ -162,6 +162,16 @@ BINARY_SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitBinarySensorDesc]] =
             value=lambda device: device.state.refresh_state is not None,
             force_add=LITTER_WITH_CAMERA,
         ),
+        PetKitBinarySensorDesc(
+            key="N60 deodorizer presence",
+            translation_key="n60_deodorize_presence",
+            device_class=BinarySensorDeviceClass.PROBLEM,
+            value=lambda device: (
+                None
+                if device.state.spray_state is None
+                else device.state.spray_state == 0
+            ),
+        ),
     ],
     WaterFountain: [
         *COMMON_ENTITIES,

@@ -39,6 +39,9 @@
       "camera_status": {
         "name": "Camera status"
       },
+      "n60_deodorize_presence": {
+        "name": "N60 deodorizer module state"
+      },
       "care_plus_subscription": {
         "name": "Care+ subscription"
       },
