@@ -289,7 +289,10 @@
         "default": "mdi:cup-water"
       },
       "end_date_care_plus_subscription": {
-        "default": "mdi:calendar"
+        "default": "mdi:calendar-check",
+        "state": {
+          "0": "mdi:calendar-remove"
+        }
       },
       "error_message": {
         "default": "mdi:alert-circle"
