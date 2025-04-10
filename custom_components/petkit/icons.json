@@ -671,8 +671,8 @@
       "pet_toileting_notif": {
         "default": "mdi:bell",
         "state": {
-          "off": "mdi:bell",
-          "on": "mdi:bell-off"
+          "off": "mdi:bell-off",
+          "on": "mdi:bell-check"
         }
       },
       "pet_tracking": {
