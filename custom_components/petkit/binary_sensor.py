@@ -9,8 +9,8 @@ from typing import TYPE_CHECKING
 from pypetkitapi import (
     D4S,
     D4SH,
+    LITTER_WITH_CAMERA,
     T4,
-    T5,
     T6,
     Feeder,
     Litter,
@@ -160,7 +160,7 @@ BINARY_SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitBinarySensorDesc]] =
             translation_key="deodorization_running",
             device_class=BinarySensorDeviceClass.RUNNING,
             value=lambda device: device.state.refresh_state is not None,
-            force_add=[T5, T6],
+            force_add=LITTER_WITH_CAMERA,
         ),
     ],
     WaterFountain: [
