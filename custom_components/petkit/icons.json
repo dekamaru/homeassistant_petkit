@@ -466,6 +466,13 @@
           "on": "mdi:cctv"
         }
       },
+      "camera_light": {
+        "default": "mdi:led-outline",
+        "state": {
+          "off": "mdi:led-variant-off",
+          "on": "mdi:led-on"
+        }
+      },
       "child_lock": {
         "default": "mdi:lock",
         "state": {
@@ -659,6 +666,13 @@
         "state": {
           "off": "mdi:bell-off",
           "on": "mdi:bell-check"
+        }
+      },
+      "pet_toileting_notif": {
+        "default": "mdi:bell",
+        "state": {
+          "off": "mdi:bell",
+          "on": "mdi:bell-off"
         }
       },
       "pet_tracking": {

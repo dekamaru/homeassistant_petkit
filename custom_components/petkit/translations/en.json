@@ -268,7 +268,7 @@
         "name": "Drink times"
       },
       "end_date_care_plus_subscription": {
-        "name": "Care+ end subscription"
+        "name": "Care+ remaining days"
       },
       "error": {
         "name": "Error"
@@ -540,11 +540,17 @@
       "indicator_light": {
         "name": "Indicator light"
       },
+      "camera_light": {
+        "name": "Camera light indicator"
+      },
       "kitten_mode": {
         "name": "Kitten mode"
       },
       "lack_liquid_notify": {
         "name": "Notif on purifying liquid shortage"
+      },
+      "pet_toileting_notif": {
+        "name": "Notif on pet toileting"
       },
       "lack_sand_notify": {
         "name": "Notif on litter shortage"
