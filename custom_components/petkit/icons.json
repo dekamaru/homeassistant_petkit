@@ -29,13 +29,6 @@
           "on": "mdi:air-purifier"
         }
       },
-      "n60_deodorize_presence": {
-        "default": "mdi:air-purifier",
-        "state": {
-          "off": "mdi:air-purifier",
-          "on": "mdi:air-purifier-off"
-        }
-      },
       "eating": {
         "default": "mdi:cat"
       },
@@ -103,6 +96,13 @@
         "state": {
           "off": "mdi:flash",
           "on": "mdi:flash-alert"
+        }
+      },
+      "n60_deodorize_presence": {
+        "default": "mdi:air-purifier",
+        "state": {
+          "off": "mdi:air-purifier",
+          "on": "mdi:air-purifier-off"
         }
       },
       "no_disturbing_switch": {
