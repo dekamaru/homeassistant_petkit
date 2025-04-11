@@ -192,15 +192,15 @@ BUTTON_MAPPING: dict[type[PetkitDevices], list[PetKitButtonDesc]] = {
             value=lambda device: device.k3_device,
         ),
         PetKitButtonDesc(
-            # For T5/T6 only
-            key="Deodorize T5 T6",
+            # For T5 only using the N60 deodorizer
+            key="Deodorize T5",
             translation_key="deodorize",
             action=lambda api, device: api.send_api_request(
                 device.id,
                 DeviceCommand.CONTROL_DEVICE,
                 {DeviceAction.START: LBCommand.ODOR_REMOVAL},
             ),
-            only_for_types=LITTER_WITH_CAMERA,
+            only_for_types=[T5],
             value=lambda device: device.deodorant_tip,
             is_available=lambda device: device.state.refresh_state is None,
         ),
