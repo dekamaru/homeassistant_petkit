@@ -23,9 +23,10 @@ from pypetkitapi import (
     FeederCommand,
     LBCommand,
     Litter,
+    LitterCommand,
     Pet,
     Purifier,
-    WaterFountain, LitterCommand,
+    WaterFountain,
 )
 
 from homeassistant.components.button import ButtonEntity, ButtonEntityDescription
