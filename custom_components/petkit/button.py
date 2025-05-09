@@ -25,7 +25,7 @@ from pypetkitapi import (
     Litter,
     Pet,
     Purifier,
-    WaterFountain,
+    WaterFountain, LitterCommand,
 )
 
 from homeassistant.components.button import ButtonEntity, ButtonEntityDescription
@@ -208,9 +208,7 @@ BUTTON_MAPPING: dict[type[PetkitDevices], list[PetKitButtonDesc]] = {
             key="Reset N50 odor eliminator",
             translation_key="reset_n50_odor_eliminator",
             action=lambda api, device: api.send_api_request(
-                device.id,
-                DeviceCommand.CONTROL_DEVICE,
-                {DeviceAction.START: LBCommand.RESET_N50_DEODOR},
+                device.id, LitterCommand.RESET_N50_DEODORIZER
             ),
             only_for_types=DEVICES_LITTER_BOX,
         ),
