@@ -179,7 +179,7 @@ This integration is available in the following languages:
 - French
 - German
 - Italian
-- Chinese (thanks to @pujiaxun)
+- Chinese (thanks to @pujiaxun & @LvWind)
 - Ukrainian (thanks to @PolarWooolf)
 - Russian (thanks to @PolarWooolf)
 - Swedish (thanks to @el97)
