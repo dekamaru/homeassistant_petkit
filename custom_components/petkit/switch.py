@@ -576,6 +576,17 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
             ),
         ),
         PetKitSwitchDesc(
+            key="Sand Saving",
+            translation_key="sand_saving",
+            value=lambda device: device.state.sand_saving,
+            turn_on=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"sandSaving": 1}
+            ),
+            turn_off=lambda api, device: api.send_api_request(
+                device.id, DeviceCommand.UPDATE_SETTING, {"sandSaving": 0}
+            ),
+        ),
+        PetKitSwitchDesc(
             key="Pet visit notif",
             translation_key="pet_visit_notif",
             value=lambda device: device.settings.pet_notify,
