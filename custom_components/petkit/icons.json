@@ -709,6 +709,13 @@
           "on": "mdi:bell-check"
         }
       },
+      "sand_saving": {
+        "default": "mdi:leaf-circle",
+        "state": {
+          "off": "mdi:leaf-circle",
+          "on": "mdi:leaf-circle-outline"
+        }
+      },
       "shortage_alarm": {
         "default": "mdi:bell",
         "state": {
