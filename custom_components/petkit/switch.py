@@ -578,7 +578,8 @@ SWITCH_MAPPING: dict[type[PetkitDevices], list[PetKitSwitchDesc]] = {
         PetKitSwitchDesc(
             key="Sand Saving",
             translation_key="sand_saving",
-            value=lambda device: device.state.sand_saving,
+            value=lambda device: device.settings.sand_saving,
+            entity_category=EntityCategory.CONFIG,
             turn_on=lambda api, device: api.send_api_request(
                 device.id, DeviceCommand.UPDATE_SETTING, {"sandSaving": 1}
             ),
