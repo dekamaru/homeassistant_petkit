@@ -352,6 +352,7 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
             state_class=SensorStateClass.TOTAL,
             value=lambda device: device.device_stats.times,
             force_add=[T3, T4],
+            ignore_types=[T5, T6],
         ),
         PetKitSensorDesc(
             key="Times used T5 T6",
@@ -359,6 +360,7 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
             state_class=SensorStateClass.TOTAL,
             value=lambda device: device.in_times,
             force_add=[T5, T6],
+            ignore_types=[T3, T4],
         ),
         PetKitSensorDesc(
             key="Total time T3 T4",
@@ -367,6 +369,7 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
             native_unit_of_measurement=UnitOfTime.SECONDS,
             value=lambda device: device.device_stats.total_time,
             force_add=[T3, T4],
+            ignore_types=[T5, T6],
         ),
         PetKitSensorDesc(
             key="Total time T5 T6",
@@ -375,6 +378,7 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
             native_unit_of_measurement=UnitOfTime.SECONDS,
             value=lambda device: device.total_time,
             force_add=[T5, T6],
+            ignore_types=[T3, T4],
         ),
         PetKitSensorDesc(
             key="Average time",
