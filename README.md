@@ -153,6 +153,10 @@ You juste need to enter your Petkit account credentials.
 
 > [!IMPORTANT]
 > It's recommended to use an external storage to store media files. As the device can generate a lot of media files, it can fill up your Home Assistant storage quickly. Specially if you have "Fetch video" option enabled.
+>
+> ℹ️ You can mount external storage in Home Assistant via: `Settings` > `System` > `Storage` > `Add network storage`. Once mounted, use the path `/your_storage_name` to store media files on this storage.\
+> ⚠️ Important: Do not use the full path shown in the "Remote share path" field it will not work. Also, keep in mind that paths are case-sensitive.
+
 
 - Media refresh interval : The interval in minutes to refresh media list. (default: 5)
 - Fetch image : Enable image fetching for feeders/litter with camera. (default: true)
