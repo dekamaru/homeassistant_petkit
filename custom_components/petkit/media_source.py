@@ -32,6 +32,7 @@ _LOGGER = logging.getLogger(__name__)
 
 EXT_MP4 = ".mp4"
 EXT_JPG = ".jpg"
+MEDIA_ROOT = "/media/local"
 
 
 async def async_get_media_source(hass: HomeAssistant) -> PetkitMediaSource:
@@ -42,7 +43,9 @@ async def async_get_media_source(hass: HomeAssistant) -> PetkitMediaSource:
 class PetkitMediaSource(MediaSource):
     """Provide Petkit media source recordings."""
 
-    def __init__(self, hass: HomeAssistant) -> None:
+    name: str = "Petkit"
+
+    def __init__(self, hass: HomeAssistant, name: str = "Petkit") -> None:
         """Initialize PetkitMediaSource."""
         super().__init__(DOMAIN)
         self.hass = hass
@@ -68,7 +71,7 @@ class PetkitMediaSource(MediaSource):
 
         url = async_process_play_media_url(
             self.hass,
-            f"/media/local/{file_path.relative_to(self.media_path)}",
+            f"{MEDIA_ROOT}/{file_path.relative_to(self.media_path)}",
             allow_relative_url=True,
             for_supervisor_network=True,
         )
@@ -131,7 +134,7 @@ class PetkitMediaSource(MediaSource):
         """Build a file media item."""
         thumbnail_url = async_process_play_media_url(
             self.hass,
-            f"/media/local/{str(child.parent.relative_to(self.media_path)).replace('video', 'snapshot')}/{child.name.replace('.mp4', '.jpg')}",
+            f"{MEDIA_ROOT}/{str(child.parent.relative_to(self.media_path)).replace('video', 'snapshot')}/{child.name.replace('.mp4', '.jpg')}",
             allow_relative_url=True,
             for_supervisor_network=True,
         )
@@ -151,7 +154,7 @@ class PetkitMediaSource(MediaSource):
 
     def get_device_name_from_data(self, match_device: str) -> str:
         """Match a string with a key in the data dictionary and extract the device name."""
-        data = self.coordinator.data_coordinator.data
+        data = self.coordinator.data or {}
         for key, value in data.items():
             if match_device in str(key):
                 return value.device_nfo.device_name.capitalize()
