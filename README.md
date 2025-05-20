@@ -157,7 +157,6 @@ You juste need to enter your Petkit account credentials.
 > ℹ️ You can mount external storage in Home Assistant via: `Settings` > `System` > `Storage` > `Add network storage`. Once mounted, use the path `/your_storage_name` to store media files on this storage.\
 > ⚠️ Important: Do not use the full path shown in the "Remote share path" field it will not work. Also, keep in mind that paths are case-sensitive.
 
-
 - Media refresh interval : The interval in minutes to refresh media list. (default: 5)
 - Fetch image : Enable image fetching for feeders/litter with camera. (default: true)
 - Fetch video : Enable video fetching for feeders/litter with camera. (default: false)
