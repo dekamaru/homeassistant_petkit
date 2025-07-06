@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any, Callable
 
 from pypetkitapi import (
     CTW3,
+    D4,
     D4H,
     D4S,
     D4SH,
@@ -297,7 +298,7 @@ SENSOR_MAPPING: dict[type[PetkitDevices], list[PetKitSensorDesc]] = {
             translation_key="raw_distribution_data",
             entity_category=EntityCategory.DIAGNOSTIC,
             value=lambda device: get_raw_feed_plan(device.device_records),
-            force_add=[D4H, D4SH],
+            force_add=[D4, D4H, D4SH],
         ),
     ],
     Litter: [
