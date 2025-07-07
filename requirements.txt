@@ -1,2 +1,2 @@
 aiofiles==24.1.0
-pypetkitapi==1.16.4
+pypetkitapi @ git+https://github.com/dekamaru/py-petkit-api.git@main
